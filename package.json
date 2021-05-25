@@ -1,0 +1,13 @@
+{
+  "name": "images-on-map",
+  "version": "0.0.1",
+  "description": "Images on map",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js server"
+  },
+  "dependencies": {
+    "@mojojs/mojo": "^0.0.1-alpha.22"
+  }
+}
