@@ -8,6 +8,7 @@
     "start": "node app.js server"
   },
   "dependencies": {
-    "@mojojs/mojo": "^0.0.1-alpha.22"
+    "@mojojs/mojo": "^0.0.1-alpha.22",
+    "exifr": "^7.0.0"
   }
 }
