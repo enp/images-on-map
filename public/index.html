@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        window.onload = async () => {
+            const response = await fetch('/location')
+            const data = await response.json()
+            const map = L.map('mapdiv').setView([data.location.latitude, data.location.longitude], 13)
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map)
+            for (const image of data.images) {
+                const path = `/public/images/${image.file}`
+                const html = `<a href="${path}"><img style="max-width: 200px; height: auto" src="${path}"></a>`
+                L.marker([image.location.latitude, image.location.longitude]).addTo(map).bindPopup(html).openPopup()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="mapdiv" style="position:absolute; top:0; right:0; bottom:0; left:0;"></div>
+</body>
+
+</html>
